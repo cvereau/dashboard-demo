@@ -1,0 +1,12 @@
+.mat-drawer-container {
+  background-color: var(--color-background) !important;
+
+  .mat-drawer {
+    border-radius: 0px !important;
+
+    .mdc-list-item:hover::before {
+      background-color: transparent;
+      opacity: 1;
+    }
+  }
+}

@@ -1,6 +1,12 @@
-import { bootstrapApplication } from '@angular/platform-browser';
-import { appConfig } from './app/app.config';
-import { AppComponent } from './app/app.component';
+import ResizeObserver from 'resize-observer-polyfill';
+(window as any).ResizeObserver = ResizeObserver;
 
-bootstrapApplication(AppComponent, appConfig)
+import { AllCommunityModule, ModuleRegistry } from 'ag-grid-community';
+ModuleRegistry.registerModules([AllCommunityModule]);
+
+import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
+import { AppModule } from './app/app.module';
+
+platformBrowserDynamic()
+  .bootstrapModule(AppModule)
   .catch((err) => console.error(err));

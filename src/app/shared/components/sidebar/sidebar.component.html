@@ -1,0 +1,52 @@
+<mat-sidenav-container class="sidebar">
+  <mat-sidenav #sidebar class="sidebar__panel" [mode]="isMobile ? 'over' : 'side'" [fixedInViewport]="true">
+    <section class="sidebar__layout">
+      <section class="sidebar__content">
+        <img src="images/sredio-logo.png" width="94" alt="logo" />
+        <section class="sidebar__user-content">
+          <img src="images/avatar.svg" height="42" width="42" alt="avatar" />
+          <div class="sidebar__user-info">
+            <div class="sidebar__user-name">Cesar Vereau</div>
+            <div class="sidebar__user-role">Admin</div>
+          </div>
+          <button mat-icon-button>
+            <mat-icon>keyboard_arrow_down</mat-icon>
+          </button>
+        </section>
+        <mat-nav-list class="sidebar__nav">
+          @for (item of menuItems; track item.label ) {
+          <a
+            mat-list-item
+            [routerLink]="item.route"
+            routerLinkActive="sidebar__item--selected"
+            class="sidebar__item"
+          >
+            <mat-icon matListItemIcon class="sidebar__icon">{{ item.icon }}</mat-icon>
+            <span matListItemTitle class="sidebar__text">{{ item.label }}</span>
+          </a>
+          }
+        </mat-nav-list>
+      </section>
+
+      <section class="sidebar__footer">
+        <div class="sidebar__footer-action">
+          <mat-icon>{{ isDarkTheme ? 'dark_mode' : 'light_mode' }} </mat-icon>
+          <mat-slide-toggle class="pl-8" [(ngModel)]="isDarkTheme"></mat-slide-toggle>
+        </div>
+
+        <div class="sidebar__footer-action">
+          <button mat-button class="sidebar__footer-logout">
+            <mat-icon class="sidebar__footer-logout-icon">logout</mat-icon>
+          </button>
+        </div>
+      </section>
+    </section>
+  </mat-sidenav>
+
+  <mat-sidenav-content class="sidebar__main">
+    <button mat-icon-button class="sidebar__hamburger" (click)="toggleSidebar()">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <ng-content></ng-content>
+  </mat-sidenav-content>
+</mat-sidenav-container>

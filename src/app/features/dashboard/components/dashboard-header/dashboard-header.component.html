@@ -1,0 +1,86 @@
+<header class="dashboard-header">
+  <section class="dashboard-header__topbar">
+    <div class="dashboard-header__title">Acme Inc</div>
+
+    <div class="dashboard-header__actions">
+      <mat-form-field class="visually-hidden" appearance="outline">
+        <mat-date-range-input [rangePicker]="picker">
+          <input matStartDate [(ngModel)]="selectedRange.start" />
+          <input matEndDate [(ngModel)]="selectedRange.end" />
+        </mat-date-range-input>
+      </mat-form-field>
+
+      <mat-date-range-picker #picker></mat-date-range-picker>
+
+      <div class="dashboard-header__actions-group desktop-only">
+        <mat-button-toggle-group class="dashboard-header__button" multiple>
+          <mat-button-toggle
+            class="dashboard-header__date-range"
+            (click)="picker.open()"
+            disableRipple
+            [value]="null"
+          >
+            <mat-icon>date_range</mat-icon>
+            {{ getDateRangeLabel() }}
+          </mat-button-toggle>
+          <mat-button-toggle class="dashboard-header__date-range" disableRipple [value]="null">
+            Fiscal Period
+          </mat-button-toggle>
+        </mat-button-toggle-group>
+
+        <button mat-stroked-button class="dashboard-header__button">
+          <mat-icon>refresh</mat-icon> Refresh
+        </button>
+
+        <button mat-stroked-button class="dashboard-header__button">
+          <mat-icon>filter_alt</mat-icon> Filter
+        </button>
+
+        <button mat-stroked-button class="dashboard-header__button">
+          <mat-icon>download</mat-icon> Export
+        </button>
+      </div>
+
+      <div class="dashboard-header__mobile mobile-only">
+        <mat-button-toggle-group class="dashboard-header__button" multiple>
+          <mat-button-toggle
+            class="dashboard-header__date-range"
+            (click)="picker.open()"
+            disableRipple
+            [value]="null"
+          >
+            <mat-icon>date_range</mat-icon>
+            {{ getDateRangeLabel() }}
+          </mat-button-toggle>
+          <mat-button-toggle class="dashboard-header__date-range" disableRipple [value]="null">
+            Fiscal Period
+          </mat-button-toggle>
+        </mat-button-toggle-group>
+        <button mat-icon-button [matMenuTriggerFor]="mobileMenu" class="dashboard-header__menu-button">
+          <mat-icon>more_vert</mat-icon>
+        </button>
+        <mat-menu #mobileMenu="matMenu">
+          <button mat-menu-item>
+            <mat-icon>refresh</mat-icon>
+            <span>Refresh</span>
+          </button>
+          <button mat-menu-item>
+            <mat-icon>filter_alt</mat-icon>
+            <span>Filter</span>
+          </button>
+          <button mat-menu-item>
+            <mat-icon>download</mat-icon>
+            <span>Export</span>
+          </button>
+        </mat-menu>
+      </div>
+    </div>
+  </section>
+  <section class="dashboard-header__integrations">
+    <div class="dashboard-header__integrations-title">Active Integrations</div>
+    <div class="dashboard-header__integrations-apps">
+      <img src="images/jira-logo.png" height="35" alt="jira-logo" />
+      <img src="images/harvest-logo.png" height="20" alt="harvest-logo" />
+    </div>
+  </section>
+</header>
