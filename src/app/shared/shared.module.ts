@@ -20,7 +20,6 @@ const components = [NotFoundComponent, SidebarComponent, WidgetComponent];
     MaterialModule,
     FormsModule,
     AgCharts,
-    //AgGridModule,
   ],
   exports: [...components, AgCharts, AgGridModule],
 })
